@@ -117,7 +117,7 @@
                                 <!--end::Menu separator-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-5 my-1">
-                                    <a href="{{ route('profile.show') }}" wire:navigate class="menu-link px-5">Profile</a>
+                                    <a href="{{ route('profile.show') }}"  class="menu-link px-5">Profile</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
@@ -200,7 +200,7 @@
                                         @csrf
                                     </form>
 
-                                    <a href="#" wire:navigate class="menu-link px-5" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <a href="#"  class="menu-link px-5" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Log Out') }}
                                     </a>
 
@@ -241,43 +241,40 @@
                             <div class="menu-item">
                                 <!--begin:Menu content-->
                                 <div class="menu-content">
-                                    <span class="menu-section fs-5 fw-bolder ps-1 py-1">Apps</span>
+                                    <span class="menu-section fs-5 fw-bolder ps-1 py-1">Navigations</span>
                                 </div>
                                 <!--end:Menu content-->
                             </div>
                             <!--end:Menu item-->
 
-
-                            @foreach($navigationItems as $item)
+                            @forelse($navigationItems as $item)
                                 {{--                            @if($item->children->isNotEmpty()) data-toggle="collapse" @endif--}}
-                                @if($item->children->isNotEmpty())
+                                @if (!empty($item['children']))
                                     <!--begin:Menu item-->
                                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
                                         <span class="menu-link">
-											<span class="menu-icon">
-                                              @if($item->icon)
-                                                    <img src="{{ asset('icons/' . $item->icon) }}" alt="{{ $item->name }} icon">
-                                                @else
-                                                    <i class="ki-outline ki-rocket fs-2"></i>
-                                                @endif
-											</span>
-											<span class="menu-title">   {{ $item->name }} </span>
+                                            @if($item['icon'])
+                                                <span class="menu-icon">
+                                                    {!! $item['icon'] !!}
+                                                </span>
+                                            @endif
+											<span class="menu-title">   {{ $item['name'] }} </span>
 											<span class="menu-arrow"></span>
 										</span>
                                         <!--end:Menu link-->
                                         <!--begin:Menu sub-->
                                         <div class="menu-sub menu-sub-accordion">
-                                            @foreach($item->children as $child)
-                                                @if(Illuminate\Support\Facades\Route::has($child->route_name ))
+                                            @foreach ($item['children'] as $child)
+                                                @if(Illuminate\Support\Facades\Route::has($child['route_name']))
                                                 <!--begin:Menu item-->
                                                 <div class="menu-item">
                                                     <!--begin:Menu link-->
-                                                    <a class="menu-link" href="{{ route($child->route_name) }}" wire:navigate>
+                                                    <a class="menu-link" href="{{ route($child['route_name']) }}" >
                                                     <span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
-                                                        <span class="menu-title">    {{ $child->name }} </span>
+                                                        <span class="menu-title">{{ $child['name'] }}</span>
                                                     </a>
                                                     <!--end:Menu link-->
                                                 </div>
@@ -292,17 +289,27 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="{{ $item->url ?? '#' }}">
-											<span class="menu-icon">
-												<i class="ki-outline ki-calendar-8 fs-2"></i>
-											</span>
-                                            <span class="menu-title">{{ $item->name }}</span>
+                                        <a class="menu-link"  href="{{ $item['route_name'] ?? '#' }}">
+                                            @if($item['icon'])
+                                                <span class="menu-icon">
+                                                    {!! $item['icon'] !!}
+                                                </span>
+                                            @endif
+                                            <span class="menu-title">{{ $item['name'] }}</span>
                                         </a>
                                         <!--end:Menu link-->
                                     </div>
                                     <!--end:Menu item-->
                                 @endif
-                            @endforeach
+                            @empty
+                                <!--begin:Menu item-->
+                                <div class="menu-item">
+                                    <span class="menu-link">
+                                        <span class="menu-title text-danger-emphasis">No Navigation</span>
+                                    </span>
+                                </div>
+                                <!--end:Menu item-->
+                            @endforelse
 
 
 
@@ -356,11 +363,11 @@
                                 </div>
                                 <!--end::Page title-->
                                 <!--begin::Actions-->
-                                <div class="d-flex align-items-center gap-2 gap-lg-3">
-                                    <a href="#" class="btn btn-flex btn-color-gray-700 btn-active-color-primary bg-light h-40px fs-7 fw-bold" data-bs-toggle="modal" data-bs-target="#kt_modal_view_users">History</a>
-                                    <a href="#" class="btn btn-sm btn-flex btn-secondary align-self-center px-3" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
-                                        <i class="ki-outline ki-plus-square fs-3"></i>Invite</a>
-                                </div>
+{{--                                <div class="d-flex align-items-center gap-2 gap-lg-3">--}}
+{{--                                    <a href="#" class="btn btn-flex btn-color-gray-700 btn-active-color-primary bg-light h-40px fs-7 fw-bold" data-bs-toggle="modal" data-bs-target="#kt_modal_view_users">History</a>--}}
+{{--                                    <a href="#" class="btn btn-sm btn-flex btn-secondary align-self-center px-3" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">--}}
+{{--                                        <i class="ki-outline ki-plus-square fs-3"></i>Invite</a>--}}
+{{--                                </div>--}}
                                 <!--end::Actions-->
                             </div>
                             <!--end::Toolbar wrapper-->

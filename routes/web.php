@@ -14,16 +14,9 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
+        $section = 'dashboard';
 
-        $navigationItems = Navigation::whereNull('parent_id')
-            ->where('group', 'dashboard')
-            ->with('children')
-            ->orderBy('order')
-            ->get();
-
-
-
-        return view('dashboard', compact('navigationItems'));
+        return view('dashboard', compact('section'));
     })->name('dashboard');
 
     Route::prefix('student')->name('student.')->group(function () {

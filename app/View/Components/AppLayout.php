@@ -10,23 +10,28 @@ class AppLayout extends Component
     public bool $hasHeader;
     public bool $hasSidebar;
     public bool $hasToolbar;
-
-    public $navigationItems;
+    public array $navigationItems;
 
     /**
      * Create a new component instance.
      *
-     * @return void
+     * @param bool $hasHeader
+     * @param bool $hasSidebar
+     * @param bool $hasToolbar
+     * @param string|null $navigationSection
      */
-    public function __construct($hasHeader = true, $hasSidebar = true, $hasToolbar = true,
-    $navigationItems = []
-    )
-    {
+    public function __construct(
+        bool $hasHeader = true,
+        bool $hasSidebar = true,
+        bool $hasToolbar = true,
+        ?string $navigationSection = null
+    ) {
         $this->hasHeader = $hasHeader;
         $this->hasSidebar = $hasSidebar;
         $this->hasToolbar = $hasToolbar;
 
-        $this->navigationItems = $navigationItems;
+        // Load navigation items if a section is provided
+        $this->navigationItems = $navigationSection ? getNavigation($navigationSection) : [];
     }
 
     /**
