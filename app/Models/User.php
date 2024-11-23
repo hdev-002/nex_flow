@@ -64,4 +64,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+//    public function getRedirectRoute(): string
+//    {
+//        return match((int)$this->id) {
+//            1 => 'dashboard',
+//            2 => 'students',
+//            // ...
+//        };
+//    }
 }

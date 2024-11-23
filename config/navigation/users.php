@@ -3,8 +3,8 @@
 return [
     [
         'name' => 'Users',
-        'route_name' => 'users.index',
-        'icon' => 'users-icon',
+        'route_name' => 'users.dashboard',
+        'icon' => '<i class="ki-outline ki-shield-tick fs-2"></i>',
         'children' => [
             [
                 'name' => 'List',

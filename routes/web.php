@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\StudentController;
-use App\Models\Navigation;
+use App\Http\Controllers\UserManagement\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::middleware([
@@ -14,12 +14,22 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        $section = 'dashboard';
 
-        return view('dashboard', compact('section'));
+        return view('dashboard');
     })->name('dashboard');
+
+    Route::prefix('users')->name('users.')->group(function () {
+        Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
+        Route::get('/list', [UserController::class, 'index'])->name('list');
+        Route::get('/create', [UserController::class, 'create'])->name('create');
+        Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
+    });
 
     Route::prefix('student')->name('student.')->group(function () {
         Route::get('/', [StudentController::class, 'index'])->name('index');
     });
+
+    Route::get('/application-manager', function (){
+        return view('application-manager',['section' => 'application-manager']);
+    })->name('application-manager')->middleware(['password.confirm']);
 });

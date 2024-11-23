@@ -124,9 +124,9 @@ return [
     ],
 
 
-    'aliases' => [
-        'Module' => Nwidart\Modules\Facades\Module::class,
-    ],
+//    'aliases' => [
+//        'Module' => Nwidart\Modules\Facades\Module::class,
+//    ],
 
 
 ];

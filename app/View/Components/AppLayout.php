@@ -24,14 +24,17 @@ class AppLayout extends Component
         bool $hasHeader = true,
         bool $hasSidebar = true,
         bool $hasToolbar = true,
-        ?string $navigationSection = null
+        ?string $navigationSection = null,
+        ?string $moduleName = null,
     ) {
         $this->hasHeader = $hasHeader;
         $this->hasSidebar = $hasSidebar;
         $this->hasToolbar = $hasToolbar;
+        $this->navigationItems = getNavigationAll();
 
+//        dd($this->navigationItems[3]);
         // Load navigation items if a section is provided
-        $this->navigationItems = $navigationSection ? getNavigation($navigationSection) : [];
+//        $this->navigationItems = $navigationSection ? getNavigation($navigationSection, $moduleName) : [];
     }
 
     /**

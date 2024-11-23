@@ -1,13 +1,18 @@
-<x-action-section>
-    <x-slot name="title">
-        {{ __('Two Factor Authentication') }}
-    </x-slot>
-
-    <x-slot name="description">
-        {{ __('Add additional security to your account using two factor authentication.') }}
-    </x-slot>
-
-    <x-slot name="content">
+<div class="card mb-5 mb-xl-10">
+    <!--begin::Card header-->
+    <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
+        <!--begin::Card title-->
+        <div class="card-title m-0">
+            <h3 class="fw-bold m-0">  {{ __('Two Factor Authentication') }}
+                <br>
+                <span class="text-gray-500 fs-6">{{ __('Add additional security to your account using two factor authentication.') }}</span>
+            </h3>
+        </div>
+        <!--end::Card title-->
+    </div>
+    <!--begin::Card header-->
+    <!--begin::Content-->
+    <div class="card-body">
         <h3 class="text-lg font-medium text-gray-900">
             @if ($this->enabled)
                 @if ($showingConfirmation)
@@ -38,7 +43,7 @@
                     </p>
                 </div>
 
-                <div class="mt-4 p-2 inline-block bg-white">
+                <div class="mt-4 p-2 inline-block">
                     {!! $this->user->twoFactorQrCodeSvg() !!}
                 </div>
 
@@ -50,11 +55,11 @@
 
                 @if ($showingConfirmation)
                     <div class="mt-4">
-                        <x-label for="code" value="{{ __('Code') }}" />
+                        <label for="code" class="col-form-label required fw-semibold fs-6">{{ __('Code') }}</label>
 
-                        <x-input id="code" type="text" name="code" class="block mt-1 w-1/2" inputmode="numeric" autofocus autocomplete="one-time-code"
-                            wire:model="code"
-                            wire:keydown.enter="confirmTwoFactorAuthentication" />
+                        <input id="code" type="text" name="code" class="form-control form-control-sm w-25" inputmode="numeric" autofocus autocomplete="one-time-code"
+                                 wire:model="code"
+                                 wire:keydown.enter="confirmTwoFactorAuthentication" />
 
                         <x-input-error for="code" class="mt-2" />
                     </div>
@@ -79,46 +84,47 @@
         <div class="mt-5">
             @if (! $this->enabled)
                 <x-confirms-password wire:then="enableTwoFactorAuthentication">
-                    <x-button type="button" wire:loading.attr="disabled">
+                    <button type="button" class="btn btn-dark" wire:loading.attr="disabled">
                         {{ __('Enable') }}
-                    </x-button>
+                    </button>
                 </x-confirms-password>
             @else
                 @if ($showingRecoveryCodes)
                     <x-confirms-password wire:then="regenerateRecoveryCodes">
-                        <x-secondary-button class="me-3">
+                        <button class="me-3" class="me-3 btn btn-dark">
                             {{ __('Regenerate Recovery Codes') }}
-                        </x-secondary-button>
+                        </button>
                     </x-confirms-password>
                 @elseif ($showingConfirmation)
                     <x-confirms-password wire:then="confirmTwoFactorAuthentication">
-                        <x-button type="button" class="me-3" wire:loading.attr="disabled">
+                        <button type="button" class="me-3 btn btn-dark" wire:loading.attr="disabled">
                             {{ __('Confirm') }}
-                        </x-button>
+                        </button>
                     </x-confirms-password>
                 @else
                     <x-confirms-password wire:then="showRecoveryCodes">
-                        <x-secondary-button class="me-3">
+                        <button class="me-3 btn btn-dark">
                             {{ __('Show Recovery Codes') }}
-                        </x-secondary-button>
+                        </button>
                     </x-confirms-password>
                 @endif
 
                 @if ($showingConfirmation)
                     <x-confirms-password wire:then="disableTwoFactorAuthentication">
-                        <x-secondary-button wire:loading.attr="disabled">
+                        <button wire:loading.attr="disabled" class="btn btn-secondary">
                             {{ __('Cancel') }}
-                        </x-secondary-button>
+                        </button>
                     </x-confirms-password>
                 @else
                     <x-confirms-password wire:then="disableTwoFactorAuthentication">
-                        <x-danger-button wire:loading.attr="disabled">
+                        <button wire:loading.attr="disabled" class="btn btn-danger">
                             {{ __('Disable') }}
-                        </x-danger-button>
+                        </button>
                     </x-confirms-password>
                 @endif
 
             @endif
         </div>
-    </x-slot>
-</x-action-section>
+    </div>
+    <!--end::Content-->
+</div>

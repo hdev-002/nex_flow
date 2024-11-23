@@ -20,5 +20,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
+        $this->call([ApplicationSeeder::class]);
+        $this->call([NRCSeeder::class]);
+
     }
 }
