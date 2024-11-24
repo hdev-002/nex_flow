@@ -317,17 +317,29 @@
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
+                                @php
+                                    $currentLocal =  Session::get('locale', config('app.locale'));
+                                @endphp
                                 <div class="menu-item px-5" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="left-start" data-kt-menu-offset="-15px, 0">
                                     <a href="#" class="menu-link px-5">
 												<span class="menu-title position-relative">Language
-												<span class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
+												<span class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">
+                                        @if($currentLocal == 'mm')
+                                            မြန်မာ
+                                        @elseif($currentLocal == 'en')
+                                            English
+                                        @elseif($currentLocal == 'sm_mm')
+                                            Smart Burmese
+                                        @else
+
+                                        @endif
 {{--												<img class="w-15px h-15px rounded-1 ms-2" src="assets/media/flags/united-states.svg" alt="" /></span></span>--}}
                                     </a>
                                     <!--begin::Menu sub-->
                                     <div class="menu-sub menu-sub-dropdown w-175px py-4">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="account/settings.html" class="menu-link d-flex px-5 active">
+                                            <a href="{{ route('change.language', 'en') }}" class="menu-link d-flex px-5 {{$currentLocal == 'en' ? 'active' : ''}}">
 													<span class="symbol symbol-20px me-4">
 {{--														<img class="rounded-1" src="assets/media/flags/united-states.svg" alt="" />--}}
 													</span>English</a>
@@ -335,7 +347,15 @@
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="account/settings.html" class="menu-link d-flex px-5">
+                                            <a href="{{ route('change.language', 'sm_mm') }}" class="menu-link d-flex px-5 {{$currentLocal == 'sm_mm' ? 'active' : ''}}">
+													<span class="symbol symbol-20px me-4">
+{{--														<img class="rounded-1" src="assets/media/flags/spain.svg" alt="" />--}}
+													</span>Smart Burmese</a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item px-3">
+                                            <a href="{{ route('change.language', 'mm') }}" class="menu-link d-flex px-5 {{$currentLocal == 'mm' ? 'active' : ''}}">
 													<span class="symbol symbol-20px me-4">
 {{--														<img class="rounded-1" src="assets/media/flags/spain.svg" alt="" />--}}
 													</span>မြန်မာ</a>
@@ -650,8 +670,9 @@
     </script>
 @endif
 @include('js.shortcut')
+<script src="https://cdn.jsdelivr.net/npm/livewire-v3/dist/livewire.min.js"></script>
 
-
+@livewireScripts
 </body>
 <!--end::Body-->
 </html>
