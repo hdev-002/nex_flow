@@ -7,4 +7,5 @@ return [
         'icon' => '<i class="ki-outline ki-element-1 fs-2"></i>',
         'children' => [],
     ],
+
 ];

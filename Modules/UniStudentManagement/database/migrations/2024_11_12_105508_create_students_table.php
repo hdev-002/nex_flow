@@ -41,7 +41,7 @@ return new class extends Migration
             $table->string('major')->nullable();
             $table->string('get_university')->nullable();
             $table->boolean('draft')->default(true);
-            $table->unsignedInteger('created_by');
+            $table->unsignedInteger('created_by')->nullable();
             $table->unsignedInteger('updated_by')->nullable();
             $table->unsignedInteger('deleted_by')->nullable();
             $table->softDeletes();

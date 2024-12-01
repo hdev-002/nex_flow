@@ -272,6 +272,11 @@
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
+                                <div class="menu-item px-5 my-1">
+                                    <a href="{{ route('api-tokens.index') }}"  class="menu-link px-5">API Token</a>
+                                </div>
+                                <!--end::Menu item-->
+                                <!--begin::Menu item-->
                                 <div class="menu-item px-5" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="left-start" data-kt-menu-offset="-15px, 0">
                                     <a href="#" class="menu-link px-5">
 												<span class="menu-title position-relative">Mode
@@ -591,10 +596,6 @@
     <!--end::Page-->
 </div>
 <!--end::App-->
-<div>
-    <button wire:click="$refresh">Click Me</button>
-</div>
-
 <!--begin::Scrolltop-->
 <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true" wire:scroll>
     <i class="ki-outline ki-arrow-up"></i>
@@ -625,7 +626,7 @@
 <!--end::Custom Javascript-->
 
 @stack('scripts')
-
+@livewireScripts
 
 <script>
     toastr.options = {
@@ -669,10 +670,11 @@
         toastr.warning("{{ session('warning') }}");
     </script>
 @endif
+
 @include('js.shortcut')
 <script src="https://cdn.jsdelivr.net/npm/livewire-v3/dist/livewire.min.js"></script>
 
-@livewireScripts
+
 </body>
 <!--end::Body-->
 </html>

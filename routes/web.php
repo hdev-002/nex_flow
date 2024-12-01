@@ -25,6 +25,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+
     Route::prefix('users')->name('users.')->group(function () {
         Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
         Route::get('/list', [UserController::class, 'index'])->name('list');

@@ -31,6 +31,7 @@ class DataSelect2 extends Component
 
     public function updatedDataSelected()
     {
+//        dd($this->dataSelected);
         $this->dispatch($this->componentId, $this->dataSelected);
     }
 

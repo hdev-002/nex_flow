@@ -59,46 +59,46 @@
         @endforeach
     </select>
 </div>
-
 @push('scripts')
     <script>
+        document.addEventListener('livewire:init', () => {
 
-        // Reinitialize select2 on Livewire DOM update
-        document.addEventListener('livewire:load', () => {
-            initSelect2();
-        });
+            Livewire.hook('morph.updated', ({ el, component }) => {
+                // Check if the element is a Select2 element
+                if (el.querySelector('.form-select.select-{{ $componentId }}')) {
+                    // Initialize Select2
+                    initSelect2();
+                }
+            });
 
-        document.addEventListener('livewire:update', () => {
-            initSelect2();
-        });
 
-        function initSelect2() {
+            function initSelect2() {
+                const selectElementId = `#data-select-{{ $componentId }}`;
+                const selectElement = $(selectElementId);
 
-            const selectElementId = `#data-select-{{ $componentId }}`;
-            const selectElement = $(selectElementId);
+                // Destroy any existing Select2 instance
+                if (selectElement.hasClass('select2-initialized')) {
+                    selectElement.select2('destroy');
+                }
 
-            // Destroy existing select2 instance if initialized
-            if (selectElement.hasClass('select2-initialized')) {
-                selectElement.select2('destroy');
+                // Initialize Select2
+                selectElement.select2({
+                    placeholder: selectElement.data('placeholder'),
+                    allowClear: true,
+                });
+
+                // Mark as initialized
+                selectElement.addClass('select2-initialized');
+
+                // Sync value with Livewire
+                selectElement.on('change', function (e) {
+                @this.set('dataSelected', e.target.value);
+                });
             }
 
-            // Initialize select2
-            selectElement.select2({
-                placeholder: $(selectElement).data('placeholder'),
-                allowClear: true,
-            });
-
-            selectElement.addClass('select2-initialized');
-
-            // Bind Livewire model on change
-            $(selectElement).on('change', function (e) {
-            @this.set('dataSelected', e.target.value);
-            });
-        }
-    </script>
-
-    <script>
-        initSelect2();
+            // Initialize Select2 on page load
+            initSelect2();
+        });
     </script>
 @endpush
 
