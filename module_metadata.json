@@ -1,0 +1,15 @@
+{
+    "UniStudentManagement" : {
+        "repository": "",
+        "branch": "main"
+    },
+    "Product" : {
+        "repository": "",
+        "branch": "main"
+    },
+    "Purchase" : {
+        "repository": "",
+        "branch": "main",
+        "dependencies": ["Product"]
+    }
+}
