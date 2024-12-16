@@ -55,7 +55,15 @@ trait WithDataTableFilters
         if (!empty($this->search)) {
             $query->where(function ($q) use ($searchableColumns) {
                 foreach ($searchableColumns as $column) {
-                    $q->orWhere($column, 'like', '%' . $this->search . '%');
+                    if (str_contains($column, '.')) {
+                        [$relation, $relatedColumn] = explode('.', $column);
+                        $q->orWhereHas($relation, function ($relationQuery) use ($relatedColumn) {
+                            $relationQuery->where($relatedColumn, 'like', '%' . $this->search . '%');
+                        });
+                    } else {
+                        $q->orWhere($column, 'like', '%' . $this->search . '%');
+                    }
+//                    $q->orWhere($column, 'like', '%' . $this->search . '%');
                 }
             });
         }

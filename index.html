@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Screen Example</title>
+
+</head>
+<style>
+    /* Global reset */
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Loading Screen Styles */
+    #loading-screen {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #f4f4f4;
+        z-index: 9999;
+    }
+
+    /* HTML: <div class="loader"></div> */
+    .loader {
+        width: 60px;
+        aspect-ratio: 1;
+        display: grid;
+        grid: 50%/50%;
+        color: #25b09b;
+        --_g: no-repeat linear-gradient(currentColor 0 0);
+        background: var(--_g),var(--_g),var(--_g);
+        background-size: 50.1% 50.1%;
+        animation:
+            l6-0   1.5s infinite steps(1) alternate,
+            l6-0-0 3s   infinite steps(1);
+    }
+    .loader::before {
+        content: "";
+        background: currentColor;
+        transform: perspective(150px) rotateY(0deg) rotateX(0deg);
+        transform-origin: bottom right;
+        animation: l6-1 1.5s infinite linear alternate;
+    }
+    @keyframes l6-0 {
+        0%  {background-position: 0    100%,100% 100%,100% 0}
+        33% {background-position: 100% 100%,100% 100%,100% 0}
+        66% {background-position: 100% 0   ,100% 0   ,100% 0}
+    }
+    @keyframes l6-0-0 {
+        0%  {transform: scaleX(1)  rotate(0deg)}
+        50% {transform: scaleX(-1) rotate(-90deg)}
+    }
+    @keyframes l6-1 {
+        16.5%{transform:perspective(150px) rotateX(-90deg)  rotateY(0deg)    rotateX(0deg);filter:grayscale(0.8)}
+        33%  {transform:perspective(150px) rotateX(-180deg) rotateY(0deg)    rotateX(0deg)}
+        66%  {transform:perspective(150px) rotateX(-180deg) rotateY(-180deg) rotateX(0deg)}
+        100% {transform:perspective(150px) rotateX(-180deg) rotateY(-180deg) rotateX(-180deg);filter:grayscale(0.8)}
+    }
+
+
+    #loading-screen p {
+        margin-top: 15px;
+        font-size: 1.2rem;
+        color: #555;
+    }
+
+    /* Main Content Styles */
+    #content {
+        padding: 20px;
+        text-align: center;
+    }
+
+</style>
+
+<body>
+<!-- Loading Screen -->
+<div id="loading-screen">
+    <div class="loader"></div>
+    <p>Loading, please wait...</p>
+</div>
+
+<!-- Main Content -->
+<div id="content" style="display: none;">
+    <h1>Welcome to the Page</h1>
+    <p>This is the main content of the page.</p>
+</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Yf5d_Zx3AaI?si=DvMAaa63kp8Z9QcM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/Yf5d_Zx3AaI?si=DvMAaa63kp8Z9QcM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/Yf5d_Zx3AaI?si=DvMAaa63kp8Z9QcM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/Yf5d_Zx3AaI?si=DvMAaa63kp8Z9QcM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/Yf5d_Zx3AaI?si=DvMAaa63kp8Z9QcM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/Yf5d_Zx3AaI?si=DvMAaa63kp8Z9QcM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/Yf5d_Zx3AaI?si=DvMAaa63kp8Z9QcM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/Yf5d_Zx3AaI?si=DvMAaa63kp8Z9QcM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/Yf5d_Zx3AaI?si=DvMAaa63kp8Z9QcM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wHFflWvii3M?si=_0ZaiEhWRgtppomF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/wHFflWvii3M?si=_0ZaiEhWRgtppomF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/wHFflWvii3M?si=_0ZaiEhWRgtppomF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/wHFflWvii3M?si=_0ZaiEhWRgtppomF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/wHFflWvii3M?si=_0ZaiEhWRgtppomF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/wHFflWvii3M?si=_0ZaiEhWRgtppomF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/wHFflWvii3M?si=_0ZaiEhWRgtppomF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/wHFflWvii3M?si=_0ZaiEhWRgtppomF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/wHFflWvii3M?si=_0ZaiEhWRgtppomF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/wHFflWvii3M?si=_0ZaiEhWRgtppomF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/wHFflWvii3M?si=_0ZaiEhWRgtppomF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/wHFflWvii3M?si=_0ZaiEhWRgtppomF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/wHFflWvii3M?si=_0ZaiEhWRgtppomF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<script>
+    // Simulate content loading
+    window.addEventListener('load', () => {
+        const loadingScreen = document.getElementById('loading-screen');
+        const content = document.getElementById('content');
+
+        // Simulate a delay (e.g., API call or heavy assets loading)
+            loadingScreen.style.display = 'none';
+            content.style.display = 'block';
+
+    });
+
+</script>
+</body>
+</html>

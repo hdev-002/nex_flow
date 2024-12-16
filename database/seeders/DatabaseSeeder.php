@@ -17,10 +17,11 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => 'demo@hdev.com',
         ]);
 
         $this->call([ApplicationSeeder::class]);
+        $this->call([ModuleSeeder::class]);
         $this->call([NRCSeeder::class]);
 
     }

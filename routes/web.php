@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PluginsController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserManagement\UserController;
 use Illuminate\Support\Facades\Route;
@@ -40,4 +41,9 @@ Route::middleware([
     Route::get('/application-manager', function (){
         return view('application-manager',['section' => 'application-manager']);
     })->name('application-manager')->middleware(['password.confirm']);
+
+    Route::prefix('plugins')->name('plugins.')->group(function () {
+        Route::get('/marketplace', [PluginsController::class, 'marketplace'])->name('marketplace');
+        Route::get('/installed', [PluginsController::class, 'installed'])->name('installed');
+    });
 });
