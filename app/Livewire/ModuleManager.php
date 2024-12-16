@@ -31,20 +31,6 @@ class ModuleManager extends Component
         $this->refreshInstalledModules();
     }
 
-//    public function loadModules()
-//    {
-//        // Dynamically get list of modules from storage/app/modules
-//        $modulePaths = File::directories(storage_path('app/modules'));
-//
-//        foreach ($modulePaths as $path) {
-//            // Extract the module name from the directory path
-//            $moduleName = pathinfo($path, PATHINFO_FILENAME);
-//            $this->modules[] = $moduleName;
-//
-//            // Calculate the total size of the module folder
-//            $this->moduleSizes[$moduleName] = $this->calculateDirectorySize($path);
-//        }
-//    }
 
     public $conflicts = [];
 

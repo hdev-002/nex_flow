@@ -2,11 +2,17 @@
 
     <div class="d-flex flex-column-fluid flex-lg-row-auto justify-content-center p-12 p-lg-20">
         <!--begin::Card-->
-        <div class="bg-body d-flex flex-column align-items-stretch flex-center rounded-4 w-md-600px p-20">
+        <div class="bg-body d-flex flex-column align-items-stretch flex-center rounded-4 w-md-400px p-10">
             <!--begin::Wrapper-->
-            <div class="d-flex flex-center flex-column flex-column-fluid px-lg-10">
+            <div class="d-flex flex-center flex-column flex-column-fluid px-lg-4">
                 {{ $slot }}
             </div>
+
+            <!--begin::Footer-->
+            <div class="d-flex flex-center flex-wrap pt-5">
+                <div class="fs-6 text-gray-600 text-center pt-5">
+                    <span class="fs-6 text-gray-500">Powered by <span class="fw-bold">HDev</span></span>
+                </div>
         </div>
     </div>
 </div>

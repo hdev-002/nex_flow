@@ -1,6 +1,6 @@
 {
     "UniStudentManagement" : {
-        "repository": "",
+        "repository": "https://github.com/hdev-002/UniStudentManagement.git",
         "branch": "main"
     },
     "Product" : {
