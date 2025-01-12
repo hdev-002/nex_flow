@@ -26,8 +26,7 @@ class UserCreate extends Component
             'password' => Hash::make($this->password),
         ]);
 
-//        $this->emit('userCreated');
-        session()->flash('message', 'User created successfully.');
+        session()->flash('success', 'User created successfully.');
 
         // Clear input fields
         $this->reset(['name', 'email', 'password']);

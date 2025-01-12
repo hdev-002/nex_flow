@@ -1,5 +1,6 @@
 {
     "SpreeAdmin": true,
-    "UniStudentManagement": false,
-    "StudentChecker": true
+    "UniStudentManagement": true,
+    "StudentChecker": true,
+    "Product": true
 }
