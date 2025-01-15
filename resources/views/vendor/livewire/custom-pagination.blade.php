@@ -2,8 +2,16 @@
     <div class="row align-items-center">
         {{-- Pagination Links (Left-Aligned) --}}
         <div class="col-sm-12 col-md-7 d-flex justify-content-center justify-content-md-start">
-            <div class="dataTables_info">
-                Total {{ $paginator->total() }}
+            <div class="">
+                <p class="small text-muted text-center mb-0">
+                    {!! __('Showing') !!}
+                    <span class="fw-semibold">{{ $paginator->firstItem() }}</span>
+                    {!! __('to') !!}
+                    <span class="fw-semibold">{{ $paginator->lastItem() }}</span>
+                    {!! __('of') !!}
+                    <span class="fw-semibold">{{ $paginator->total() }}</span>
+                    {!! __('results') !!}
+                </p>
             </div>
         </div>
 

@@ -29,6 +29,9 @@
 
     <style>
         @media (min-width: 992px) {
+            .custom-bg-primary{
+                background-color: #f1f1f4 !important;
+            }
             .custom-pd {
                 -webkit-padding-start: calc(16.25rem + calc(1rem * 1)); padding-inline-start: calc(16.25rem + calc(1rem * 1));
             }
@@ -45,31 +48,38 @@
 
             .custom-sidebar{
                 position: fixed;
-                top: calc(4.5rem * 1);
+                top: calc(4rem * 1);
                 /*left: 0;*/
                 height: calc(100dvh - 0px);
                 z-index: calc(100 + 1);
-                width: calc(16.25rem * 1);
+                width: calc(20rem * 1);
                 overflow: auto;
+                border-radius: 0;
+                padding-left: 25px;
+            }
+
+            .custom-padding-left-0{
+                padding-left: 0 !important;
             }
         }
     </style>
+    @stack('styles')
     <!-- Styles -->
     @livewireStyles
 </head>
 <!--end::Head-->
 <!--begin::Body-->
-<body id="kt_app_body" data-kt-app-header-fixed-mobile="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="false" data-kt-app-sidebar-push-header="true" data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true" class="app-default">
+<body id="kt_app_body"  data-kt-app-header-fixed-mobile="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="false" data-kt-app-sidebar-push-header="true" data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true" class="app-default custom-bg-primary">
 <!--begin::Theme mode setup on page load-->
 <script>var defaultThemeMode = "light"; var themeMode; if ( document.documentElement ) { if ( document.documentElement.hasAttribute("data-bs-theme-mode")) { themeMode = document.documentElement.getAttribute("data-bs-theme-mode"); } else { if ( localStorage.getItem("data-bs-theme") !== null ) { themeMode = localStorage.getItem("data-bs-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-bs-theme", themeMode); }</script>
 <!--end::Theme mode setup on page load-->
 <!--begin::App-->
 <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
     <!--begin::Page-->
-    <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
+    <div class="app-page flex-column flex-column-fluid bg-gray-200" id="kt_app_page">
         @if($hasHeader)
             <!--begin::Header-->
-            <div id="kt_app_header" class="app-header border-bottom custom-header">
+            <div id="kt_app_header" class="app-header border-bottom border-gray-400 custom-header">
             <!--begin::Header container-->
                 <div class="app-container container-fluid d-flex align-items-stretch justify-content-between p-sm-0" id="kt_app_header_container">
                     <!--begin::Header logo-->
@@ -81,7 +91,7 @@
                         <!--end::Mobile toggle-->
                         <!--begin::Logo image-->
                         <a href="index.html">
-                            <span class="fw-bolder text-dark-emphasis fs-2qx">NexFlow</span>
+                            <span class="fw-bolder text-dark fs-2qx">NexFlow</span>
 {{--                            <img alt="Logo" src="{{ asset('metronic/assets/media/logos/demo44.svg') }}" class="h-25px theme-light-show" />--}}
 {{--                            <img alt="Logo" src="{{ asset('metronic/assets/media/logos/demo44-dark.svg') }}" class="h-25px theme-dark-show" />--}}
                         </a>
@@ -112,7 +122,7 @@
                                 <!--begin::Menu wrapper-->
                                 <div class="cursor-pointer symbol symbol-35px symbol-md-40px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
                                     {{--                                <img class="symbol symbol-35px symbol-md-40px" src="assets/media/avatars/300-5.jpg" alt="users" />--}}
-                                    <div class="symbol-label fs-3 text-primary-emphasis">
+                                    <div class="symbol-label fs-3 text-primary-emphasis border border-gray-300">
                                         {{ substr(Auth::user()->name, 0, 1) }}
                                     </div>
                                 </div>
@@ -122,8 +132,8 @@
                                     <div class="menu-item px-3">
                                         <div class="menu-content d-flex align-items-center px-3">
                                             <!--begin::Avatar-->
-                                            <div class="symbol symbol-50px me-5 bg-primary-subtle">
-                                                <div class="symbol-label fs-3 text-primary-emphasis">
+                                            <div class="symbol symbol-50px me-5 bg-primary">
+                                                <div class="symbol-label fs-3 text-primary-emphasis ">
                                                     {{ substr(Auth::user()->name, 0, 1) }}
                                                 </div>
                                             </div>
@@ -282,11 +292,11 @@
         <!--begin::Wrapper-->
         <div class="app-wrapper d-flex mt-20" id="kt_app_wrapper">
             <!--begin::Wrapper container-->
-            <div class="app-container container-fluid d-flex">
+            <div class="app-container container-fluid d-flex custom-padding-left-0">
                 @if($hasSidebar && $navigationItems)
                     <!--begin::Sidebar-->
                     <div id="kt_app_sidebar"
-                         class="app-sidebar flex-column custom-sidebar"
+                         class="app-sidebar flex-column border-gray-300 border-top-0 border-left-0 border-bottom-0 border border-right custom-sidebar"
                          data-kt-drawer="true"
                          data-kt-drawer-name="app-sidebar"
                          data-kt-drawer-activate="{default: true, lg: false}"
@@ -296,17 +306,18 @@
                          data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
 
                     <!--begin::Sidebar secondary menu-->
-                        <div id="kt_app_sidebar_menu" data-kt-menu="true" class="menu menu-sub-indention menu-rounded menu-column menu-active-bg menu-title-gray-600 menu-icon-gray-500 menu-state-primary menu-arrow-gray-500 fw-semibold fs-6 py-4 py-lg-6 ms-lg-n7 px-2 px-lg-0">
-                            <div id="kt_app_sidebar_menu_wrapper" class="hover-scroll-y px-1 px-lg-5" wire:scroll data-kt-sticky="true" data-kt-sticky-name="app-sidebar-menu-sticky" data-kt-sticky-offset="{default: false, xl: '500px'}" data-kt-sticky-release="#kt_app_stats" data-kt-sticky-width="250px" data-kt-sticky-left="auto" data-kt-sticky-top="100px" data-kt-sticky-animation="false" data-kt-sticky-zindex="95" data-kt-scroll="true" data-kt-scroll-activate="{default: true, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_app_header, #kt_app_header" data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="20px">
-                                <!--begin:Menu item-->
-                                <div class="menu-item">
-                                    <!--begin:Menu content-->
-                                    <div class="menu-content">
-                                        <span class="menu-section fs-5 fw-bolder ps-1 py-1">Navigations</span>
-                                    </div>
-                                    <!--end:Menu content-->
-                                </div>
+                        <div id="kt_app_sidebar_menu" data-kt-menu="true" class="menu menu-sub-indention menu-rounded  menu-active-bg menu-title-gray-600 menu-icon-gray-500 menu-state-primary menu-arrow-gray-500 fw-semibold fs-6 py-4 py-lg-6 ms-lg-n7 px-2 px-lg-0">
+                            <div id="kt_app_sidebar_menu_wrapper" class=" px-1 px-lg-5" wire:scroll >
                                 <!--end:Menu item-->
+{{--                                <!--begin:Menu item-->--}}
+{{--                                <div class="menu-item">--}}
+{{--                                    <!--begin:Menu content-->--}}
+{{--                                    <div class="menu-content">--}}
+{{--                                        <span class="menu-section fs-5 fw-bolder ps-1 py-1">Navigations</span>--}}
+{{--                                    </div>--}}
+{{--                                    <!--end:Menu content-->--}}
+{{--                                </div>--}}
+{{--                                <!--end:Menu item-->--}}
                                 @forelse($navigationItems as $key=>$item)
                                     @if (!empty($item['children']))
                                         <!--begin:Menu item-->
@@ -318,7 +329,7 @@
                                                     {!! $item['icon'] !!}
                                                 </span>
                                                 @endif
-											<span class="menu-title">   {{ $item['name'] }} </span>
+											<span class="menu-title text-gray-900">   {{ $item['name'] }} </span>
 											<span class="menu-arrow"></span>
 										</span>
                                             <!--end:Menu link-->
@@ -331,9 +342,9 @@
                                                             <!--begin:Menu link-->
                                                             <a class="menu-link {{ request()->routeIs($child['route_name']) ? 'active' : '' }}" href="{{ route($child['route_name']) }}" >
                                                     <span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
+														<span class="bullet bullet-dot text-gray-900"></span>
 													</span>
-                                                                <span class="menu-title">{{ $child['name'] }}</span>
+                                                                <span class="menu-title text-gray-900   ">{{ $child['name'] }}</span>
                                                             </a>
                                                             <!--end:Menu link-->
                                                         </div>
@@ -351,11 +362,11 @@
                                                 <!--begin:Menu link-->
                                                 <a class="menu-link {{ request()->routeIs($item['route_name']) ? 'active' : '' }}"  href="{{ route($item['route_name']) }}" >
                                                     @if($item['icon'])
-                                                        <span class="menu-icon">
+                                                        <span class="menu-icon text-gray-900">
                                                     {!! $item['icon'] !!}
                                                 </span>
                                                     @endif
-                                                    <span class="menu-title">{{ $item['name'] }}</span>
+                                                    <span class="menu-title text-gray-900">{{ $item['name'] }}</span>
                                                 </a>
                                                 <!--end:Menu link-->
                                             </div>

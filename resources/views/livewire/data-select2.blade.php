@@ -45,7 +45,7 @@
 
 <div>
     <select
-        class="form-select select-{{ $componentId }}"
+        class="form-select form-select-sm select-{{ $componentId }}"
         id="data-select-{{ $componentId }}"
         wire:model="dataSelected"
         data-control="select2"
