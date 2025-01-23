@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\NRC;
+
+use App\Models\Nrc;
 use Illuminate\Support\Facades\File;
 use Illuminate\Database\Seeder;
 
