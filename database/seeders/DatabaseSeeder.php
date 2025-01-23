@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'demo@hdev.com',
+            'default_location_id' => 1,
         ]);
 
         $this->call([ApplicationSeeder::class]);

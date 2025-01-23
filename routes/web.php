@@ -16,6 +16,13 @@ Route::get('change-language/{locale}', function ($locale) {
 })->name('change.language');
 
 
+
+
+
+
+
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -46,4 +53,12 @@ Route::middleware([
         Route::get('/marketplace', [PluginsController::class, 'marketplace'])->name('marketplace');
         Route::get('/installed', [PluginsController::class, 'installed'])->name('installed');
     });
+
+
+// Location Routes
+    Route::get('/locations', \App\Livewire\Location\ListLocations::class)->name('locations.list');
+    Route::get('/locations/view/{id}', \App\Livewire\Location\ViewLocation::class)->name('locations.view');
+    Route::get('/locations/create', \App\Livewire\Location\CreateLocation::class)->name('locations.create');
+    Route::get('/locations/edit/{id}', \App\Livewire\Location\UpdateLocation::class)->name('locations.update');
+
 });

@@ -5,7 +5,7 @@
 
         <!--begin::Add users-->
         <a href="{{ route('users.create') }}" class="btn btn-sm btn-flex btn-dark align-self-center px-3">
-            <i class="ki-outline ki-plus-square fs-3"></i>Add User</a>
+            <i class="ki-outline ki-plus-square fs-3"></i>Create</a>
         <!--end::Add users-->
 
     </div>
@@ -393,6 +393,7 @@
 														</span><span class="dt-column-order"></span></th><th class="min-w-125px dt-orderable-asc dt-orderable-desc" data-dt-column="1" rowspan="1" colspan="1" aria-label="User: Activate to sort" tabindex="0"><span class="dt-column-title" role="button">Account</span><span class="dt-column-order"></span></th>
                             <th class="min-w-125px dt-orderable-asc dt-orderable-desc" data-dt-column="2" rowspan="1" colspan="1" aria-label="Role: Activate to sort" tabindex="0"><span class="dt-column-title" role="button">Role</span><span class="dt-column-order"></span></th>
                             <th class="min-w-125px dt-orderable-asc dt-orderable-desc" data-dt-column="3" rowspan="1" colspan="1" aria-label="Email Verified At: Activate to sort" tabindex="0"><span class="dt-column-title" role="button">Email Verified At</span><span class="dt-column-order"></span></th>
+                            <th>Default Location</th>
                             <th class="text-end min-w-100px dt-orderable-none" data-dt-column="6" rowspan="1" colspan="1" aria-label="Actions"><span class="dt-column-title">Actions</span><span class="dt-column-order"></span></th></tr>
                         </thead>
                         <tbody class="text-gray-600 fw-semibold">
@@ -420,6 +421,7 @@
                                 </td>
                                 <td class="px-0 py-4">Admin</td>
                                 <td class="px-0 py-4">{{ $user->email_verified_at }}</td>
+                                <td class="px-0 py-4">{{ $user?->defaultLocation?->name }}</td>
                                 <td class="text-end px-0 py-4">
                                     <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
                                         <i class="ki-outline ki-down fs-5 ms-1"></i></a>

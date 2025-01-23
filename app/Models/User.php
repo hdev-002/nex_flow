@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Settings\Location;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -29,6 +30,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'default_location_id'
     ];
 
     /**
@@ -65,6 +67,10 @@ class User extends Authenticatable
         ];
     }
 
+    public function defaultLocation()
+    {
+        return $this->hasOne(Location::class, 'id', 'default_location_id');
+    }
 //    public function getRedirectRoute(): string
 //    {
 //        return match((int)$this->id) {

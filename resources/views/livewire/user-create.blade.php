@@ -74,13 +74,41 @@
                         <!--end::Wrapper-->
 
                         <!--begin::Hint-->
-                        <div class="text-muted">
+                        <div class="text-muted mb-7">
                             Use 8 or more characters with a mix of letters, numbers & symbols.
                         </div>
                         <!--end::Hint-->
                         @error('password')<div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <!--end::Main wrapper-->
+                    <div class="row">
+                        <!--begin::Input group-->
+                        <div wire:ignore class="fv-row col-12 col-md-6 mb-7 fv-plugins-icon-container">
+                            <label class="fw-semibold fs-6 mb-2">Default Location</label>
+                            <select
+                                class="form-select form-select-sm select-default-location-id"
+                                id="data-select-default-location-id"
+                                wire:model="default_location_id"
+                                data-control="select2"
+                                data-placeholder="Select an option"
+                            >
+                                <option value="">Select an option</option>
+                                @foreach ($defaultLocations as $location)
+                                    <option value="{{ $location['id'] }}">
+                                        {{ $location['name'] }}
+                                    </option>
+                                @endforeach
+                            </select>
+
+                            @error('default_location_id')<div class="text-danger">{{ $message }}</div>@enderror
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Input group-->
+                        <div class="fv-row col-12 col-md-6 mb-7 fv-plugins-icon-container">
+
+                        </div>
+                        <!--end::Input group-->
+                    </div>
 
 
                 </div>
@@ -101,3 +129,36 @@
         <!--end::Actions-->
     </form>
 </div>
+
+@push('scripts')
+    <script>
+        document.addEventListener('livewire:init', () => {
+            function initializeSelect2(selectElementId, livewireProperty) {
+                const selectElement = $(selectElementId);
+
+                // Initialize Select2
+                selectElement.select2({
+                    placeholder: selectElement.data('placeholder'),
+                    allowClear: true,
+                });
+
+                // Sync value with Livewire
+                selectElement.on('change', function (e) {
+                @this.set(livewireProperty, e.target.value || null);
+                });
+
+                // Reinitialize Select2 after Livewire updates
+                Livewire.hook('morph.updated', (el, component) => {
+                    if (el instanceof HTMLElement && el.querySelector(selectElementId)) {
+                        selectElement.select2('destroy').select2({
+                            placeholder: selectElement.data('placeholder'),
+                            allowClear: true,
+                        });
+                    }
+                });
+            }
+
+            initializeSelect2('#data-select-default-location-id', 'default_location_id');
+        });
+    </script>
+@endpush

@@ -4,14 +4,14 @@
 <head>
     <base href="../../../" />
     <meta charset="utf-8" />
-    <meta name="description" content="The most advanced Tailwind CSS & Bootstrap 5 Admin Theme with 40 unique prebuilt layouts on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony & Laravel versions. Grab your copy now and get life-time updates for free." />
-    <meta name="keywords" content="tailwind, tailwindcss, metronic, bootstrap, bootstrap 5, angular, VueJs, React, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony & Laravel starter kits, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="nexflow, business, erp, pos, management" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Metronic - The World's #1 Selling Tailwind CSS & Bootstrap Admin Template by KeenThemes" />
+    <meta property="og:title" content="NexFlow - The World's #1 Business Apps" />
     <meta property="og:url" content="https://google.com" />
-    <meta property="og:site_name" content="Metronic by Keenthemes" />
+    <meta property="og:site_name" content="NexFlow by Hdev" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="shortcut icon" href="{{ asset('metronic/assets/media/logos/favicon.ico') }}" />
@@ -66,6 +66,9 @@
     @stack('styles')
     <!-- Styles -->
     @livewireStyles
+    <livewire:styles />
+
+
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -77,7 +80,7 @@
 <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
     <!--begin::Page-->
     <div class="app-page flex-column flex-column-fluid bg-gray-200" id="kt_app_page">
-        @if($hasHeader)
+        @if(true)
             <!--begin::Header-->
             <div id="kt_app_header" class="app-header border-bottom border-gray-400 custom-header">
             <!--begin::Header container-->
@@ -293,7 +296,7 @@
         <div class="app-wrapper d-flex mt-20" id="kt_app_wrapper">
             <!--begin::Wrapper container-->
             <div class="app-container container-fluid d-flex custom-padding-left-0">
-                @if($hasSidebar && $navigationItems)
+                @if(true)
                     <!--begin::Sidebar-->
                     <div id="kt_app_sidebar"
                          class="app-sidebar flex-column border-gray-300 border-top-0 border-left-0 border-bottom-0 border border-right custom-sidebar"
@@ -318,6 +321,9 @@
 {{--                                    <!--end:Menu content-->--}}
 {{--                                </div>--}}
 {{--                                <!--end:Menu item-->--}}
+                                @php
+                                $navigationItems = getNavigationAll();
+                                @endphp
                                 @forelse($navigationItems as $key=>$item)
                                     @if (!empty($item['children']))
                                         <!--begin:Menu item-->
@@ -442,8 +448,9 @@
 <script src="{{ asset('metronic/assets/js/custom/utilities/modals/users-search.js') }}"></script>
 <!--end::Custom Javascript-->
 
-@stack('scripts')
 @livewireScripts
+@stack('scripts')
+
 
 <script>
     toastr.options = {
