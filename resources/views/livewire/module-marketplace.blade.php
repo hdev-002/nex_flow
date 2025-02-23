@@ -1,4 +1,4 @@
-<div class="mt-10">
+<div>
 
     @if (session()->has('success'))
         <div class="bg-green-100 text-green-700 px-4 py-2 mb-4">
@@ -46,7 +46,7 @@
                        <p class="text-muted mb-2">{{ $module->description }}</p>
                    </div>
 
-                   <div class="text-end">
+                   <div class="text-end ms-9">
                        @if ($module->status === 'installed')
                            <button
                                wire:click="updateModule('{{ $module->id }}')"

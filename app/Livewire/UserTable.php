@@ -10,6 +10,8 @@ class UserTable extends Component
 {
     use WithPagination;
 
+    protected $paginationTheme = 'bootstrap';
+
     protected $listeners = ['userCreated' => '$refresh', 'userUpdated' => '$refresh'];
 
     public function deleteUser($userId)
@@ -21,7 +23,7 @@ class UserTable extends Component
     public function render()
     {
         return view('livewire.user-table', [
-            'users' => User::paginate(10),
+            'users' => User::paginate(20),
         ]);
     }
 }

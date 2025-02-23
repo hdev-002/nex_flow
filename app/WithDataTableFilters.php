@@ -63,7 +63,6 @@ trait WithDataTableFilters
                     } else {
                         $q->orWhere($column, 'like', '%' . $this->search . '%');
                     }
-//                    $q->orWhere($column, 'like', '%' . $this->search . '%');
                 }
             });
         }

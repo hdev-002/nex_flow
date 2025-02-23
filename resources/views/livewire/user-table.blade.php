@@ -1,29 +1,38 @@
-<!-- resources/views/livewire/users-table.blade.php -->
-<div id="kt_app_content" class="app-content flex-column-fluid">
+<div>
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <span class="d-flex align-items-center"><span class="fw-bolder fs-2 ms-2">Users</span></span>
+
+
+        <!--begin::Add users-->
+        <a href="{{ route('users.create') }}" class="btn btn-sm btn-flex btn-dark align-self-center px-3">
+            <i class="ki-outline ki-plus-square fs-3"></i>Create</a>
+        <!--end::Add users-->
+
+    </div>
     <!--begin::Card-->
-    <div class="card">
+    <div class="card w-md-800px w-lg-1000px shadow-none border-1 border-gray-400">
         @if (session()->has('message'))
             <div class="alert alert-success">{{ session('message') }}</div>
         @endif
         <!--begin::Card header-->
-        <div class="card-header border-0 pt-6">
+        <div class="card-header border-0 ps-6 pe-0 pt-3">
             <!--begin::Card title-->
-            <div class="card-title">
+            <div class="card-title m-0">
                 <!--begin::Search-->
                 <div class="d-flex align-items-center position-relative my-1">
                     <i class="ki-outline ki-magnifier fs-3 position-absolute ms-5"></i>
-                    <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-13" placeholder="Search user">
+                    <input type="text" data-kt-user-table-filter="search" class="form-control form-control-sm w-30  0px ps-13" placeholder="Search user">
                 </div>
                 <!--end::Search-->
             </div>
             <!--begin::Card title-->
             <!--begin::Card toolbar-->
-            <div class="card-toolbar">
+            <div class="card-toolbar m-0">
                 <!--begin::Toolbar-->
                 <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
                     <!--begin::Filter-->
-{{--                    <button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">--}}
-{{--                        <i class="ki-outline ki-filter fs-2"></i>Filter</button>--}}
+                    <button type="button" class="btn btn-icon btn-custom w-35px h-35px w-md-40px h-md-40px btn-active-light-secondary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                        <i class="ki-outline ki-filter fs-2"></i></button>
                     <!--begin::Menu 1-->
                     <div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true">
                         <!--begin::Header-->
@@ -39,23 +48,23 @@
                             <!--begin::Input group-->
                             <div class="mb-10">
                                 <label class="form-label fs-6 fw-semibold">Role:</label>
-                                <select class="form-select form-select-solid fw-bold select2-hidden-accessible" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="role" data-hide-search="true" data-select2-id="select2-data-7-qkvt" tabindex="-1" aria-hidden="true" data-kt-initialized="1">
-                                    <option data-select2-id="select2-data-9-xqkq"></option>
+                                <select class="form-select form-select-solid fw-bold select2-hidden-accessible" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="role" data-hide-search="true" data-select2-id="select2-data-7-rde7" tabindex="-1" aria-hidden="true" data-kt-initialized="1">
+                                    <option data-select2-id="select2-data-9-hxsl"></option>
                                     <option value="Administrator">Administrator</option>
                                     <option value="Analyst">Analyst</option>
                                     <option value="Developer">Developer</option>
                                     <option value="Support">Support</option>
                                     <option value="Trial">Trial</option>
-                                </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-8-o2rj" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-solid fw-bold" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-ze1b-container" aria-controls="select2-ze1b-container"><span class="select2-selection__rendered" id="select2-ze1b-container" role="textbox" aria-readonly="true" title="Select option"><span class="select2-selection__placeholder">Select option</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-8-ktwm" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-solid fw-bold" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-xqop-container" aria-controls="select2-xqop-container"><span class="select2-selection__rendered" id="select2-xqop-container" role="textbox" aria-readonly="true" title="Select option"><span class="select2-selection__placeholder">Select option</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
                             </div>
                             <!--end::Input group-->
                             <!--begin::Input group-->
                             <div class="mb-10">
                                 <label class="form-label fs-6 fw-semibold">Two Step Verification:</label>
-                                <select class="form-select form-select-solid fw-bold select2-hidden-accessible" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="two-step" data-hide-search="true" data-select2-id="select2-data-10-89qy" tabindex="-1" aria-hidden="true" data-kt-initialized="1">
-                                    <option data-select2-id="select2-data-12-i45x"></option>
+                                <select class="form-select form-select-solid fw-bold select2-hidden-accessible" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-user-table-filter="two-step" data-hide-search="true" data-select2-id="select2-data-10-3cqs" tabindex="-1" aria-hidden="true" data-kt-initialized="1">
+                                    <option data-select2-id="select2-data-12-hruo"></option>
                                     <option value="Enabled">Enabled</option>
-                                </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-11-gsri" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-solid fw-bold" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-wqgn-container" aria-controls="select2-wqgn-container"><span class="select2-selection__rendered" id="select2-wqgn-container" role="textbox" aria-readonly="true" title="Select option"><span class="select2-selection__placeholder">Select option</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-11-2lud" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-solid fw-bold" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-a38z-container" aria-controls="select2-a38z-container"><span class="select2-selection__rendered" id="select2-a38z-container" role="textbox" aria-readonly="true" title="Select option"><span class="select2-selection__placeholder">Select option</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
                             </div>
                             <!--end::Input group-->
                             <!--begin::Actions-->
@@ -70,18 +79,9 @@
                     <!--end::Menu 1-->
                     <!--end::Filter-->
                     <!--begin::Export-->
-{{--                    <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_export_users">--}}
-{{--                        <i class="ki-outline ki-exit-up fs-2"></i>Export</button>--}}
+                    <button type="button" class="btn btn-sm btn-flex btn-outline btn-outline-dark align-self-center me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_export_users">
+                        <i class="ki-outline ki-exit-up fs-2"></i>Export</button>
                     <!--end::Export-->
-                    <!--begin::Add users-->
-                    @if(true)
-                        <a href="{{ route('users.create') }}" class="btn btn-primary">
-                            <i class="ki-outline ki-plus fs-2"></i>Add User</a>
-                    @else
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
-                            <i class="ki-outline ki-plus fs-2"></i>Add User</button>
-                    @endif
-                    <!--end::Add users-->
                 </div>
                 <!--end::Toolbar-->
                 <!--begin::Group actions-->
@@ -119,14 +119,14 @@
                                         <label class="fs-6 fw-semibold form-label mb-2">Select Roles:</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select name="role" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bold select2-hidden-accessible" data-select2-id="select2-data-13-ww5l" tabindex="-1" aria-hidden="true" data-kt-initialized="1">
-                                            <option data-select2-id="select2-data-15-ij4y"></option>
+                                        <select name="role" data-control="select2" data-placeholder="Select a role" data-hide-search="true" class="form-select form-select-solid fw-bold select2-hidden-accessible" data-select2-id="select2-data-13-tdkd" tabindex="-1" aria-hidden="true" data-kt-initialized="1">
+                                            <option data-select2-id="select2-data-15-tytj"></option>
                                             <option value="Administrator">Administrator</option>
                                             <option value="Analyst">Analyst</option>
                                             <option value="Developer">Developer</option>
                                             <option value="Support">Support</option>
                                             <option value="Trial">Trial</option>
-                                        </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-14-6v4r" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-solid fw-bold" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-role-kc-container" aria-controls="select2-role-kc-container"><span class="select2-selection__rendered" id="select2-role-kc-container" role="textbox" aria-readonly="true" title="Select a role"><span class="select2-selection__placeholder">Select a role</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                        </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-14-51iy" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-solid fw-bold" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-role-zv-container" aria-controls="select2-role-zv-container"><span class="select2-selection__rendered" id="select2-role-zv-container" role="textbox" aria-readonly="true" title="Select a role"><span class="select2-selection__placeholder">Select a role</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
                                         <!--end::Input-->
                                     </div>
                                     <!--end::Input group-->
@@ -136,13 +136,13 @@
                                         <label class="required fs-6 fw-semibold form-label mb-2">Select Export Format:</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select name="format" data-control="select2" data-placeholder="Select a format" data-hide-search="true" class="form-select form-select-solid fw-bold select2-hidden-accessible" data-select2-id="select2-data-16-5jm6" tabindex="-1" aria-hidden="true" data-kt-initialized="1">
-                                            <option data-select2-id="select2-data-18-9jj8"></option>
+                                        <select name="format" data-control="select2" data-placeholder="Select a format" data-hide-search="true" class="form-select form-select-solid fw-bold select2-hidden-accessible" data-select2-id="select2-data-16-a2kl" tabindex="-1" aria-hidden="true" data-kt-initialized="1">
+                                            <option data-select2-id="select2-data-18-y5vh"></option>
                                             <option value="excel">Excel</option>
                                             <option value="pdf">PDF</option>
                                             <option value="cvs">CVS</option>
                                             <option value="zip">ZIP</option>
-                                        </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-17-c3f2" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-solid fw-bold" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-format-sn-container" aria-controls="select2-format-sn-container"><span class="select2-selection__rendered" id="select2-format-sn-container" role="textbox" aria-readonly="true" title="Select a format"><span class="select2-selection__placeholder">Select a format</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                        </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-17-zuwh" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-solid fw-bold" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-format-gx-container" aria-controls="select2-format-gx-container"><span class="select2-selection__rendered" id="select2-format-gx-container" role="textbox" aria-readonly="true" title="Select a format"><span class="select2-selection__placeholder">Select a format</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
                                         <!--end::Input-->
                                         <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div></div>
                                     <!--end::Input group-->
@@ -189,7 +189,7 @@
                                 <!--begin::Form-->
                                 <form id="kt_modal_add_user_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">
                                     <!--begin::Scroll-->
-                                    <div class="d-flex flex-column scroll-y px-5 px-lg-10" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px" style="max-height: 198px;">
+                                    <div class="d-flex flex-column scroll-y px-5 px-lg-10" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px" style="max-height: 413px;">
                                         <!--begin::Input group-->
                                         <div class="fv-row mb-7">
                                             <!--begin::Label-->
@@ -374,11 +374,13 @@
         </div>
         <!--end::Card header-->
         <!--begin::Card body-->
-        <div class="card-body py-4">
+        <div class="card-body pt-1 pb-5 px-5">
             <!--begin::Table-->
-            <div id="kt_table_users_wrapper" class="dt-container dt-bootstrap5 dt-empty-footer"><div id="" class="table-responsive"><table class="table align-middle table-row-dashed fs-6 gy-5 dataTable" id="kt_table_users" style="width: 1094.5px;">
+            <div id="kt_table_users_wrapper" class="dt-container dt-bootstrap5 dt-empty-footer">
+                <div id="" class="table-responsive">
+                    <table class="table align-middle  fs-6 gy-5 dataTable" id="kt_table_users" style="width: 1094.5px;">
                         <thead>
-                        <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0" role="row">
+                        <tr class="fw-semibold fs-6 text-gray-900  border-bottom border-gray-200" role="row">
                             <th class="w-10px pe-2 dt-orderable-none" data-dt-column="0" rowspan="1" colspan="1" aria-label="
 
 
@@ -391,68 +393,63 @@
 														</span><span class="dt-column-order"></span></th><th class="min-w-125px dt-orderable-asc dt-orderable-desc" data-dt-column="1" rowspan="1" colspan="1" aria-label="User: Activate to sort" tabindex="0"><span class="dt-column-title" role="button">Account</span><span class="dt-column-order"></span></th>
                             <th class="min-w-125px dt-orderable-asc dt-orderable-desc" data-dt-column="2" rowspan="1" colspan="1" aria-label="Role: Activate to sort" tabindex="0"><span class="dt-column-title" role="button">Role</span><span class="dt-column-order"></span></th>
                             <th class="min-w-125px dt-orderable-asc dt-orderable-desc" data-dt-column="3" rowspan="1" colspan="1" aria-label="Email Verified At: Activate to sort" tabindex="0"><span class="dt-column-title" role="button">Email Verified At</span><span class="dt-column-order"></span></th>
+                            <th>Default Location</th>
                             <th class="text-end min-w-100px dt-orderable-none" data-dt-column="6" rowspan="1" colspan="1" aria-label="Actions"><span class="dt-column-title">Actions</span><span class="dt-column-order"></span></th></tr>
                         </thead>
                         <tbody class="text-gray-600 fw-semibold">
                         @foreach ($users as $user)
-                        <tr>
-                            <td>
-                                <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                    <input class="form-check-input" type="checkbox" value="1">
-                                </div>
-                            </td>
-                            <td class="d-flex align-items-center">
-                                <!--begin:: Avatar -->
-{{--                                <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">--}}
-{{--                                    <a href="apps/users-management/users/view.html">--}}
-{{--                                        <div class="symbol-label">--}}
-{{--                                            <img src="assets/media/avatars/300-6.jpg" alt="Emma Smith" class="w-100">--}}
-{{--                                        </div>--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-                                <!--end::Avatar-->
-                                <!--begin::User details-->
-                                <div class="d-flex flex-column">
-                                    <a href="apps/user-management/users/view.html" class="text-gray-800 text-hover-primary mb-1">{{ $user->name }}</a>
-                                    <span>{{ $user->email }}</span>
-                                </div>
-                                <!--begin::User details-->
-                            </td>
-                            <td>Admin</td>
-                            <td>{{ $user->email_verified_at }}</td>
-                            <td class="text-end">
-                                <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                    <i class="ki-outline ki-down fs-5 ms-1"></i></a>
-                                <!--begin::Menu-->
-                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="{{ route('users.edit', $user->id) }}" class="menu-link px-3">Edit</a>
+                            <tr class="border border-top-0 border-left-0 border-right-0 border-bottom-1">
+                                <td class="px-0 py-4">
+                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="checkbox" value="1">
                                     </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <button wire:click="deleteUser({{ $user->id }})" class="menu-link px-3 btn btn-sm w-100">Delete</button>
+                                </td>
+                                <td class="d-flex align-items-center px-0 py-4">
+                                    <!--begin:: Avatar -->
+                                    <div class="symbol symbol-40px me-5 bg-primary-subtle">
+                                        <div class="symbol-label fs-3 text-primary-emphasis">
+                                            {{ substr(Auth::user()->name, 0, 1) }}
+                                        </div>
                                     </div>
-                                    <!--end::Menu item-->
-                                </div>
-                                <!--end::Menu-->
-                            </td>
-                        </tr>
+                                    <!--end::Avatar-->
+                                    <!--begin::User details-->
+                                    <div class="d-flex flex-column">
+                                        <a href="apps/user-management/users/view.html" class="text-gray-800 text-hover-primary mb-1">{{ $user->name }}</a>
+                                        <span>{{ $user->email }}</span>
+                                    </div>
+                                    <!--begin::User details-->
+                                </td>
+                                <td class="px-0 py-4">Admin</td>
+                                <td class="px-0 py-4">{{ $user->email_verified_at }}</td>
+                                <td class="px-0 py-4">{{ $user?->defaultLocation?->name }}</td>
+                                <td class="text-end px-0 py-4">
+                                    <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+                                        <i class="ki-outline ki-down fs-5 ms-1"></i></a>
+                                    <!--begin::Menu-->
+                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item px-3">
+                                            <a href="{{ route('users.edit', $user->id) }}" class="menu-link px-3">Edit</a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item px-3">
+                                            <button wire:click="deleteUser({{ $user->id }})" class="menu-link px-3 btn btn-sm w-100">Delete</button>
+                                        </div>
+                                        <!--end::Menu item-->
+                                    </div>
+                                    <!--end::Menu-->
+                                </td>
+                            </tr>
                         @endforeach
 
                         </tbody>
                         <tfoot></tfoot></table>
-
                 </div>
-                <div id="" class="row">
-                    <div id="" class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start dt-toolbar">
-
-                    </div>
-                    <div id="" class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
-                        {{ $users->links() }}
-                    </div>
-                </div></div>
+                <div class="mt-2">
+                    {{ $users->links('vendor.livewire.custom-pagination') }}
+                </div>
+            </div>
             <!--end::Table-->
         </div>
         <!--end::Card body-->
