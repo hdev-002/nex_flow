@@ -11,7 +11,7 @@
             <!--begin::Footer-->
             <div class="d-flex flex-center flex-wrap pt-5">
                 <div class="fs-6 text-gray-600 text-center pt-5">
-                    <span class="fs-6 text-gray-500">Powered by <span class="fw-bold">HDev</span></span>
+                    <span class="fs-6 text-gray-500">Powered by <span class="fw-bold">SoeNova</span></span>
                 </div>
         </div>
     </div>
