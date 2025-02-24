@@ -4,6 +4,12 @@ use App\Http\Controllers\PluginsController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserManagement\UserController;
 use Illuminate\Support\Facades\Route;
+Route::get('/test', function () {
+    return redirect()->route('dashboard');
+});
+Route::get('/applications', function(){
+    return view('livewire.application-list');
+})->name('applications.list');
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -54,8 +60,9 @@ Route::middleware([
         Route::get('/installed', [PluginsController::class, 'installed'])->name('installed');
     });
 
+    // Application Routes
 
-// Location Routes
+    // Location Routes
     Route::get('/locations', \App\Livewire\Location\ListLocations::class)->name('locations.list');
     Route::get('/locations/view/{id}', \App\Livewire\Location\ViewLocation::class)->name('locations.view');
     Route::get('/locations/create', \App\Livewire\Location\CreateLocation::class)->name('locations.create');

@@ -5,15 +5,15 @@
     <base href="../../../" />
     <meta charset="utf-8" />
     <meta name="description" content="" />
-    <meta name="keywords" content="nexflow, business, erp, pos, management" />
+    <meta name="keywords" content="soenova, business, erp, pos, management" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="NexFlow - The World's #1 Business Apps" />
+    <meta property="og:title" content="SoeNova - The World's #1 Business Apps" />
     <meta property="og:url" content="https://google.com" />
-    <meta property="og:site_name" content="NexFlow by Hdev" />
+    <meta property="og:site_name" content="SoeNova" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'SoeNova') }} | @yield('title', 'Home')</title>
     <link rel="shortcut icon" href="{{ asset('metronic/assets/media/logos/favicon.ico') }}" />
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
@@ -94,7 +94,7 @@
                         <!--end::Mobile toggle-->
                         <!--begin::Logo image-->
                         <a href="index.html">
-                            <span class="fw-bolder text-dark fs-2qx">NexFlow</span>
+                            <span class="fw-bolder text-dark fs-2qx">SoeNova</span>
 {{--                            <img alt="Logo" src="{{ asset('metronic/assets/media/logos/demo44.svg') }}" class="h-25px theme-light-show" />--}}
 {{--                            <img alt="Logo" src="{{ asset('metronic/assets/media/logos/demo44-dark.svg') }}" class="h-25px theme-dark-show" />--}}
                         </a>
