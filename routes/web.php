@@ -56,10 +56,8 @@ Route::middleware([
     })->name('application-manager')->middleware(['password.confirm']);
 
     Route::prefix('plugins')->name('plugins.')->group(function () {
-        Route::get('/marketplace', [PluginsController::class, 'marketplace'])->name('marketplace');
-        Route::get('/installed', [PluginsController::class, 'installed'])->name('installed');
     });
-
+// Location Routes
     // Application Routes
 
     // Location Routes
@@ -67,5 +65,7 @@ Route::middleware([
     Route::get('/locations/view/{id}', \App\Livewire\Location\ViewLocation::class)->name('locations.view');
     Route::get('/locations/create', \App\Livewire\Location\CreateLocation::class)->name('locations.create');
     Route::get('/locations/edit/{id}', \App\Livewire\Location\UpdateLocation::class)->name('locations.update');
+
+    Route::get('backup', \App\Livewire\DatabaseBackup::class)->name('backup');
 
 });
