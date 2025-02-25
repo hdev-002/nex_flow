@@ -16,8 +16,12 @@
                                $timezone = App\Facades\Settings::get('timezone', 'UTC');
 
                             @endphp
-                            <div class="d-flex flex-column align-items-center">
-                                <div class="fs-4 text-gray-600" id="clock">Loading...</div>
+                            <div class="">
+                                <div class="clock-container">
+                                    <div class="clock-display">
+                                        <div class="fs-2x fw-bold" id="clock">Loading...</div>
+                                    </div>
+                                </div>
                             </div>
                             <!--end::Clock-->
                             <script>
@@ -71,9 +75,9 @@
                         <div class="row g-5">
                             <!--begin::Col-->
                             <div class="col-4">
-                                <a href="{{ route('users.list')}}" class="card bg-light-primary bg-hover-light-primary card-xl-stretch mb-xl-8 text-center py-5">
+                                <a href="{{ route('users.list')}}" class="card bg-light-dark bg-hover-light-dark card-xl-stretch mb-xl-8 text-center py-5">
                                     <div class="card-body p-0">
-                                        <i class="ki-duotone ki-user-square fs-3x text-primary mb-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                                        <i class="ki-duotone ki-user-square fs-3x text-dark mb-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
                                         <div class="fw-bold fs-6 text-gray-800">Manage Users</div>
                                     </div>
                                 </a>
@@ -81,9 +85,9 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-4">
-                                <a href="{{ route('locations.list')}}" class="card bg-light-success bg-hover-light-success card-xl-stretch mb-xl-8 text-center py-5">
+                                <a href="{{ route('locations.list')}}" class="card bg-light-dark bg-hover-light-dark card-xl-stretch mb-xl-8 text-center py-5">
                                     <div class="card-body p-0">
-                                        <i class="ki-duotone ki-office-bag fs-3x text-success mb-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                                        <i class="ki-duotone ki-office-bag fs-3x text-dark mb-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
                                         <div class="fw-bold fs-6 text-gray-800">Business Locations</div>
                                     </div>
                                 </a>
@@ -91,9 +95,9 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-4">
-                                <a href="{{ route('plugins.marketplace')}}" class="card bg-light-info bg-hover-light-info card-xl-stretch mb-xl-8 text-center py-5">
+                                <a href="{{ route('plugins.marketplace')}}" class="card bg-light-dark bg-hover-light-dark card-xl-stretch mb-xl-8 text-center py-5">
                                     <div class="card-body p-0">
-                                        <i class="ki-duotone ki-abstract-26 fs-3x text-info mb-3"><span class="path1"></span><span class="path2"></span></i>
+                                        <i class="ki-duotone ki-abstract-26 fs-3x text-dark mb-3"><span class="path1"></span><span class="path2"></span></i>
                                         <div class="fw-bold fs-6 text-gray-800">App Store</div>
                                     </div>
                                 </a>
