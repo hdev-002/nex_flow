@@ -13,6 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->singleton('settings', function ($app) {
+            return new \App\Services\SettingsService();
+        });
         $this->app->bind(LocationRepositoryInterface::class, LocationRepository::class);
     }
 

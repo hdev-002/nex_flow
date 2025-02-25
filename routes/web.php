@@ -56,9 +56,14 @@ Route::middleware([
     })->name('application-manager')->middleware(['password.confirm']);
 
     Route::prefix('plugins')->name('plugins.')->group(function () {
+        Route::get('/marketplace', [PluginsController::class, 'marketplace'])->name('marketplace');
+        Route::get('/installed', [PluginsController::class, 'installed'])->name('installed');
     });
-// Location Routes
-    // Application Routes
+
+    // Business Settings Route
+    Route::get('/business-settings', \App\Livewire\BusinessSettings::class)->name('business.settings');
+    Route::get('/nevigation-settings', \App\Livewire\NavigationSettings::class)->name('navigation.customize');
+    Route::get('/dashboard-customization', \App\Livewire\DashboardCustomize::class)->name('dashboard.customize');
 
     // Location Routes
     Route::get('/locations', \App\Livewire\Location\ListLocations::class)->name('locations.list');

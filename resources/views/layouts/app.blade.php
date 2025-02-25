@@ -28,6 +28,24 @@
     <script>// Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
 
     <style>
+        /* Ensure the menu link content is aligned properly */
+.menu-link {
+    display: flex;
+    align-items: center; /* Vertically center the icon and text */
+}
+
+/* Ensure the menu icon and title are inline */
+.menu-icon {
+    display: inline-block;
+    margin-right: 8px; /* Add some spacing between the icon and text */
+}
+
+.menu-title {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
         @media (min-width: 992px) {
             .custom-bg-primary{
                 background-color: #f1f1f4 !important;
@@ -94,9 +112,22 @@
                         <!--end::Mobile toggle-->
                         <!--begin::Logo image-->
                         <a href="index.html">
-                            <span class="fw-bolder text-dark fs-2qx">SoeNova</span>
-{{--                            <img alt="Logo" src="{{ asset('metronic/assets/media/logos/demo44.svg') }}" class="h-25px theme-light-show" />--}}
-{{--                            <img alt="Logo" src="{{ asset('metronic/assets/media/logos/demo44-dark.svg') }}" class="h-25px theme-dark-show" />--}}
+                            @php
+                                $lightLogo = App\Facades\Settings::get('light_logo');
+                                $darkLogo = App\Facades\Settings::get('dark_logo');
+                            @endphp
+                            @if($lightLogo || $darkLogo)
+                                @if($lightLogo)
+                                    <img alt="Logo" src="{{ Storage::url($lightLogo) }}" class="h-25px theme-light-show" />
+                                @endif
+                                @if($darkLogo)
+                                    <img alt="Logo" src="{{ Storage::url($darkLogo) }}" class="h-25px theme-dark-show" />
+                                @endif
+                            @else
+                                <span class="app-sidebar-logo-default text-gray-700 fw-bold fs-2">
+                                    {{ App\Facades\Settings::get('business_name', 'SoeNova')}}
+                                </span>
+                            @endif
                         </a>
                         <!--end::Logo image-->
                     </div>
@@ -325,60 +356,61 @@
                                 $navigationItems = getNavigationAll();
                                 @endphp
                                 @forelse($navigationItems as $key=>$item)
-                                    @if (!empty($item['children']))
-                                        <!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion  {{ collect($item['children'])->contains(fn($child) => request()->routeIs($child['route_name'])) ? 'show' : '' }}">
-                                            <!--begin:Menu link-->
-                                            <span class="menu-link">
+                                @if (!empty($item['children']))
+                                    <!--begin:Menu item-->
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion w-100 {{ collect($item['children'])->contains(fn($child) => request()->routeIs($child['route_name'])) ? 'show' : '' }}" style="width: 200px;">
+                                        <!--begin:Menu link-->
+                                        <span class="menu-link" style="display: flex; justify-content: space-between; max-width: 200px;">
                                             @if($item['icon'])
-                                                    <span class="menu-icon">
+                                                <span class="menu-icon" style="display: inline-block; margin-right: 8px;">
                                                     {!! $item['icon'] !!}
                                                 </span>
+                                            @endif
+                                            
+                                            <span class="menu-title text-gray-900" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $item['name'] }}</span>
+                                            <span class="menu-arrow"></span>
+                                        </span>
+                                        <!--end:Menu link-->
+                                        <!--begin:Menu sub-->
+                                        <div class="menu-sub menu-sub-accordion">
+                                            @foreach ($item['children'] as $child)
+                                                @if(Illuminate\Support\Facades\Route::has($child['route_name']))
+                                                    <!--begin:Menu item-->
+                                                    <div class="menu-item w-100" style="width: 200px;">
+                                                        <!--begin:Menu link-->
+                                                        <a class="menu-link {{ request()->routeIs($child['route_name']) ? 'active' : '' }}" href="{{ route($child['route_name']) }}" style="display: flex; align-items: center;">
+                                                            <span class="menu-bullet">
+                                                                <span class="bullet bullet-dot text-gray-900"></span>
+                                                            </span>
+                                                            <span class="menu-title text-gray-900" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $child['name'] }}</span>
+                                                        </a>
+                                                        <!--end:Menu link-->
+                                                    </div>
+                                                    <!--end:Menu item-->
                                                 @endif
-											<span class="menu-title text-gray-900">   {{ $item['name'] }} </span>
-											<span class="menu-arrow"></span>
-										</span>
+                                            @endforeach
+                                        </div>
+                                        <!--end:Menu sub-->
+                                    </div>
+                                    <!--end:Menu item-->
+                                @else
+                                    @if(Illuminate\Support\Facades\Route::has($item['route_name']))
+                                        <!--begin:Menu item-->
+                                        <div class="menu-item" style="width: 200px;">
+                                            <!--begin:Menu link-->
+                                            <a class="menu-link w-100 {{ request()->routeIs($item['route_name']) ? 'active' : '' }}" href="{{ route($item['route_name']) }}" style="display: flex; align-items: center;">
+                                                @if($item['icon'])
+                                                    <span class="menu-icon text-gray-900" style="display: inline-block; margin-right: 8px;">
+                                                        {!! $item['icon'] !!}
+                                                    </span>
+                                                @endif
+                                                <span class="menu-title w-100 text-gray-900" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $item['name'] }}</span>
+                                            </a>
                                             <!--end:Menu link-->
-                                            <!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion">
-                                                @foreach ($item['children'] as $child)
-                                                    @if(Illuminate\Support\Facades\Route::has($child['route_name']))
-                                                        <!--begin:Menu item-->
-                                                        <div class="menu-item">
-                                                            <!--begin:Menu link-->
-                                                            <a class="menu-link {{ request()->routeIs($child['route_name']) ? 'active' : '' }}" href="{{ route($child['route_name']) }}" >
-                                                    <span class="menu-bullet">
-														<span class="bullet bullet-dot text-gray-900"></span>
-													</span>
-                                                                <span class="menu-title text-gray-900   ">{{ $child['name'] }}</span>
-                                                            </a>
-                                                            <!--end:Menu link-->
-                                                        </div>
-                                                        <!--end:Menu item-->
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                            <!--end:Menu sub-->
                                         </div>
                                         <!--end:Menu item-->
-                                    @else
-                                        @if(Illuminate\Support\Facades\Route::has($item['route_name']))
-                                            <!--begin:Menu item-->
-                                            <div class="menu-item">
-                                                <!--begin:Menu link-->
-                                                <a class="menu-link {{ request()->routeIs($item['route_name']) ? 'active' : '' }}"  href="{{ route($item['route_name']) }}" >
-                                                    @if($item['icon'])
-                                                        <span class="menu-icon text-gray-900">
-                                                    {!! $item['icon'] !!}
-                                                </span>
-                                                    @endif
-                                                    <span class="menu-title text-gray-900">{{ $item['name'] }}</span>
-                                                </a>
-                                                <!--end:Menu link-->
-                                            </div>
-                                            <!--end:Menu item-->
-                                        @endif
                                     @endif
+                                @endif
                                 @empty
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
