@@ -2,7 +2,7 @@
     @foreach($widgets as $widget)
         @if($widget['visible'])
             <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10"">
-                <div class="card card-flush h-md-100 shadow-none border-1 border-gray-400">
+                <div class="card card-flush h-md-100 shadow-none border-1 border-gray-400 mb-4">
                     <div class="card-header pt-5">
                         <div class="card-title d-flex flex-column">
                             <div class="d-flex align-items-center">

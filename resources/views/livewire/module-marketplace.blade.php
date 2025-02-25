@@ -15,7 +15,7 @@
         <div class="row g-4">
             @foreach ($modules as $app)
                 <div class="col-12">
-                    <div class="card h-100 w-550px shadow-sm">
+                    <div class="card h-100 shadow-sm">
                         <div class="card-body">
                             <!-- App Header with Icon and Title -->
                             <div class="d-flex align-items-center mb-3">
@@ -28,11 +28,11 @@
                                         </div>
                                     {{-- @endif --}}
                                 </div>
-                                <div>
-                                    <h5 class="card-title mb-0 d-flex align-items-center">
-                                        {{ $app->name }}
+                                <div class="flex-grow-1">
+                                    <h5 class="card-title mb-0 d-flex align-items-center flex-wrap">
+                                        <span class="me-2">{{ $app->name }}</span>
                                         {{-- @if($app->verified) --}}
-                                            <i class="ki-duotone ki-verify fs-1 text-primary ms-2" data-bs-toggle="tooltip" title="Verified Application">
+                                            <i class="ki-duotone ki-verify fs-1 text-primary" data-bs-toggle="tooltip" title="Verified Application">
                                                 <span class="path1"></span>
                                                 <span class="path2"></span>
                                             </i>
@@ -46,8 +46,8 @@
                             <p class="card-text text-gray-600 mb-4">{{ $app->description }}</p>
 
                             <!-- App Meta Information -->
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div class="text-muted small">
+                            <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+                                <div class="text-muted small mb-2 mb-sm-0">
                                     <i class="ki-duotone ki-calendar fs-6 me-1">
                                         <span class="path1"></span>
                                         <span class="path2"></span>
@@ -76,7 +76,7 @@
 
                         @if ($app->status === 'installed')          
                             <div class="d-flex gap-2">
-                                <button wire:click="updateModule('{{ $app->id }}')" class="btn btn-secondary w-12 d-flex align-items-center justify-content-center">
+                                <button wire:click="updateModule('{{ $app->id }}')" class="btn btn-secondary flex-grow-1 d-flex align-items-center justify-content-center">
                                     <i class="ki-duotone ki-refresh fs-4 me-2">
                                         <span class="path1"></span>
                                         <span class="path2"></span>
@@ -104,7 +104,6 @@
                         @endif
                         </div>
                     </div>
-                   
                 </div>
             @endforeach
         </div>

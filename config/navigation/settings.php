@@ -8,15 +8,9 @@ return [
         'children' => [],
     ],
     [
-        'name' => 'Backup & Restore',
-        'route_name' => 'backup',
-        'icon' => '<i class="ki-outline ki-external-drive fs-2"></i>',
-        'children' => [],
-    ],
-    [
         'name' => 'Settings',
         'route_name' => 'business.settings',
-        'icon' => '<i class="ki-outline ki-external-drive fs-2"></i>',
+        'icon' => '<i class="ki-outline ki-setting-2 fs-2"></i>',
         'children' => [
             [
                 'name' => 'Business Settings',
@@ -29,6 +23,10 @@ return [
             [
                 'name' => 'Dashbaord Csustomize',
                 'route_name' => 'dashboard.customize',
+            ],
+            [
+                'name' => 'Backup & Restore',
+                'route_name' => 'backup',
             ],
         ],
     ],

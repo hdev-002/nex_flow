@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\BusinessSetting;
 use Livewire\WithFileUploads;
+use App\Facades\Settings;
 
 class BusinessSettings extends Component
 {
@@ -56,6 +57,7 @@ class BusinessSettings extends Component
                 if ($filename) {
                     $this->lightLogo = $filename;
                     if ($this->saveLogo('light_logo', $filename)) {
+                        Settings::clearCache();
                         session()->flash('message', 'Light logo updated successfully.');
                     } else {
                         session()->flash('error', 'Failed to save light logo to database.');
@@ -81,6 +83,7 @@ class BusinessSettings extends Component
                 if ($filename) {
                     $this->darkLogo = $filename;
                     if ($this->saveLogo('dark_logo', $filename)) {
+                        Settings::clearCache();
                         session()->flash('message', 'Dark logo updated successfully.');
                     } else {
                         session()->flash('error', 'Failed to save dark logo to database.');
@@ -128,6 +131,7 @@ class BusinessSettings extends Component
             'default_language' => $this->defaultLanguage,
         ]);
 
+        Settings::clearCache();
         session()->flash('message', 'General settings updated successfully.');
     }
 
@@ -150,7 +154,7 @@ class BusinessSettings extends Component
             'currency_symbol' => $this->currencySymbol,
             'default_language' => $this->defaultLanguage,
         ]);
-
+        Settings::clearCache();
         session()->flash('message', 'Localization settings updated successfully.');
     }
 

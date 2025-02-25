@@ -28,7 +28,7 @@ class DatabaseBackup extends Component
     public function uploadAndRestore()
     {
         if (!$this->verifyPassword($this->password)) {
-            $this->error = 'Invalid backup password';
+            $this->error = 'Invalid password';
             return;
         }
 

@@ -7,7 +7,7 @@
         </span>
     </div>
 
-    <div class="card card-flush pt-3 mb-5 flex-row-fluid w-md-700px shadow-none border-0">
+    <div class="card card-flush pt-3 mb-5 flex-row-fluid w-md-700px shadow-none border-1 border-gray-400">
         <div class="card-body pt-0">
             <div class="mb-3">
                 <div class="d-flex flex-wrap py-5">
@@ -100,7 +100,7 @@
         </div>
     </div>
 
-    <div class="card card-flush pt-3 mb-5 flex-row-fluid w-md-700px shadow-none border-0">
+    <div class="card card-flush pt-3 mb-5 flex-row-fluid w-md-700px shadow-none border-1 border-gray-400">
         <div class="card-header">
             <h3 class="card-title fw-bolder fs-3">Location Details</h3>
         </div>
